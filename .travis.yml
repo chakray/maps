@@ -1,0 +1,48 @@
+sudo: required
+language: node_js
+node_js:
+    - 10.8.0
+before_install:
+  - export PJ_repo=$PJ_scope/$PJ_name
+  - export PJ_src=projects/$PJ_repo
+  - export PJ_dist=dist/$PJ_repo
+  - export demo_build=dist/demo${PJ_name^}
+  - BUILD=`date +%s`; sed -ie "s/BUILD/$BUILD/g" ./src/environments/environment.prod.ts
+install:
+  - npm i
+script:
+  - npm run lint
+  # - npx ng build @$PJ_scope/$PJ_name
+  - npx ng test --watch=false --code-coverage
+  - npx ng build --prod --deploy-url /$PJ_name/ --base-href /$PJ_name/
+cache:
+    directories:
+      - node_modules
+after_success:
+  - npm install codecov -g
+  - codecov
+before_deploy:
+  - if [[ $TRAVIS_TAG ]]; then
+      if [[ $PWD != *$PJ_dist ]]; then
+        cd $PJ_dist;
+      fi;
+    fi;
+deploy:
+  - provider: pages
+    local-dir: $demo_build
+    github-token: $github
+    skip-cleanup: true
+    keep-history: true
+  - provider: npm
+    email: $npm_email
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: releases
+    api_key: $github
+    skip_cleanup: true
+    draft: true
+    on:
+      tags: true
+

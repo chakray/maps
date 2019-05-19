@@ -1,0 +1,142 @@
+#########################
+## Sample Sass Lint File
+#########################
+# Linter Options
+options:
+  # Don't merge default rules
+  merge-default-rules: false
+  # Set the formatter to 'html'
+  formatter: compact
+  # Output file instead of logging results
+  # output-file: 'linters/sass-lint.html'
+  # Raise an error if more than 50 warnings are generated
+  max-warnings: 50
+# File Options
+files:
+  include:
+    - 'src/**/*.s+(a|c)ss'
+    - 'projects/**/*.s+(a|c)ss'
+  ignore:
+    - 'src/external/**/*.*'
+    - 'src/styles/**/*.*'
+# Rule Configuration
+rules:
+  extends-before-mixins: 2
+  extends-before-declarations: 2
+  placeholder-in-extend: 2
+  mixins-before-declarations:
+    - 2
+    -
+      exclude:
+        - breakpoint
+        - mq
+  no-warn: 1
+  no-debug: 1
+  no-ids: 2
+  no-important: 2
+  hex-notation:
+    - 2
+    -
+      style: lowercase
+  indentation:
+    - 2
+    -
+      size: 2
+  # https://github.com/sasstools/sass-lint/blob/develop/lib/config/property-sort-orders/concentric.yml
+  property-sort-order:
+    - 1
+    -
+      order:
+        - position
+        - top
+        - left
+        - right
+        - bottom
+        - flex
+
+        - box-sizing
+        - display
+        - justify-content
+        - align-items
+        - flex-flow
+        - flex-wrap
+        - grid
+
+        - visibility
+        - opacity
+        - z-index
+
+        - margin
+        - margin-top
+        - margin-left
+        - margin-right
+        - margin-bottom
+
+        - box-shadow
+        - outline
+
+        - cursor
+        - border
+        - border-bottom
+        - border-radius
+        - border-color
+
+        - background
+        - background-color
+        - background-image
+        - background-clip
+
+        - padding
+        - padding-top
+        - padding-left
+        - padding-right
+        - padding-bottom
+
+        - min-width
+        - width
+        - max-width
+        - min-height
+        - height
+        - max-height
+        - overflow
+
+        - color
+        - font-family
+        - font-size
+        - font-style
+        - font-weight
+        - font-variant
+        - white-space
+        - word-break
+        - line-height
+        - text-align
+        - text-shadow
+        - text-decoration
+        - text-transform
+
+        - list-style
+        - animation
+        - transition
+
+        - content
+        - src
+        - user-select
+        - speak
+      ignore-custom-properties: true
+  variable-for-property:
+    - 2
+    -
+      properties:
+        - color
+        - content
+  border-zero:
+    - 2
+  class-name-format:
+    - 2
+    - convention: snakecase
+    - ignore:
+      - fontSize
+  clean-import-paths:
+    - 2
+  declarations-before-nesting:
+    - 2
