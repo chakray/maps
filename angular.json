@@ -24,12 +24,23 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@chakray/hero/assets",
+                "output": "assets/hero"
+              }, {
+                "glob": "404.html",
+                "input": "node_modules/@chakray/utils/gh-spa",
+                "output": "./"
+              }
             ],
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/@chakray/utils/gh-spa/redirect.ts"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
