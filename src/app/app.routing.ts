@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ChHeroMod, heroConfig, ChMarkedTabTag as MarkedTag } from '@chakray/hero';
 
+import { CmMapsMod, CmMapsConfig } from '@chakray/maps';
+import { LmapsConfig as CustomConfig } from './demo/lmaps.config';
+
 import { SetupLoader } from './loader';
 import { heroCfg } from './app.config';
 import { AppDemoTag } from './demo/demo.tag';
@@ -23,12 +26,15 @@ const routes: Routes = [{
     AppDemoTag
   ],
   imports: [
+    CmMapsMod,
     HttpClientModule,
     RouterModule.forRoot(routes),
     ChHeroMod,
   ],
   providers: [{
     provide: heroConfig, useValue: heroCfg
+  }, {
+    provide: CmMapsConfig, useClass: CustomConfig
   }],
   exports: [
     ChHeroMod,

@@ -4,5 +4,25 @@
   npm i @chakray/maps --save
 ```
 
-## ref
+## leaflet
 
+Follow leaflet npm installation tutorial to setup.
+
+```
++ import { CmMapsMod, CmMapsConfig } from '@chakray/maps';
+
+@NgModules({
+  ...
+  imports: [
+    CmMapsMod,
+    ...
+  ],
+  providers: [
+    { provide: CmMapsConfig, useClass: CustomConfig }
+    ...
+  ]
+})
+
+// in html
+<cm-maps [origin]='[24.4675334,121.0967624,10.78]'></cm-maps>
+```

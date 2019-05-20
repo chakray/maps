@@ -1,0 +1,28 @@
+{
+  "name": "@chakray/maps",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0",
+    "@chakray/utils": "^0.3.0",
+    "leaflet": "^1.5.1"
+  },
+  "description": "Maps tag",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "maps",
+    "chakray"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakray/maps.git"
+  },
+  "homepage": "https://chakray.github.io/maps",
+  "bugs": {
+    "url": "https://github.com/chakray/maps/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

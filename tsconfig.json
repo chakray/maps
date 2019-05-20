@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@chakray/maps": [
+        "dist/chakray/maps"
+      ],
+      "@chakray/maps/*": [
+        "dist/chakray/maps/*"
+      ]
+    }
   }
 }
