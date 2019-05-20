@@ -1,5 +1,8 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+const reporters = process.env.TRAVIS ? ['dots'] : ['progress'];
+const reports = process.env.TRAVIS ? ['lcovonly', 'text-summary'] : ['html', 'text-summary'];
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function (config) {
   config.set({
@@ -17,15 +20,15 @@ module.exports = function (config) {
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../../../coverage/chakray/maps'),
-      reports: ['html', 'lcovonly'],
+      reports,
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters,
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     singleRun: false,
     restartOnFileChange: true
   });
