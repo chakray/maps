@@ -1,5 +1,6 @@
 import { Input, AfterViewInit, ViewChild, ElementRef, Component } from '@angular/core';
 
+import { Vendors, CmMapsConfig as MapsConfig } from './maps.config';
 import { CmMapsLoader as Loader } from './maps.loader';
 
 @Component({
@@ -10,15 +11,29 @@ import { CmMapsLoader as Loader } from './maps.loader';
 export class CmMapsTag implements AfterViewInit {
   @Input() origin = [0, 0];
   @Input() zoom = 8;
+  @Input() set vendor(v) {
+    this.vnd = v;
+  }
+  get vendor() {
+    return this.vnd;
+  }
+  vnd: Vendors;
   @ViewChild('map', { read: ElementRef }) map: ElementRef;
-  private m: any;
+  cfg: MapsConfig;
+  m: any;
   get mapEl() {
     return this.map.nativeElement;
   }
   constructor(private ld: Loader) { }
   ngAfterViewInit() {
-    this.ld.loadConfig().subscribe(cfg => {
-      this.m = this.ld.init(this.mapEl, this.origin, this.zoom);
+    this.ld.loadConfig(this.vendor).subscribe(cfg => {
+      const opts = {
+        el: this.mapEl,
+        origin: this.origin,
+        zoom: this.zoom
+      };
+      this.cfg = cfg;
+      this.m = this.ld.init(cfg, opts);
     });
   }
 }

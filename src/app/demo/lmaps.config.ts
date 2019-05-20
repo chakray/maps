@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { tileLayer, map } from 'leaflet';
 
 import { environment as env } from 'src/environments/environment';
-import { CmMapsConfig as MapsConfig, CmMapsLoaderMod } from '@chakray/maps';
+import { CmMapsConfig as MapsConfig, CmMapsLoaderMod as LoaderMod } from '@chakray/maps';
 
-@Injectable()
+@Injectable({ providedIn: LoaderMod })
 export class LmapsConfig extends MapsConfig {
   // provide apis
   api = { map, tileLayer };

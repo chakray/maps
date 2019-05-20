@@ -3,7 +3,7 @@ import { of, Subject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { CmMapsLoaderMod as LoaderMod } from './maps.loader.mod';
 
-export type Vendors = 'Google' | 'Leaflet' | 'Unknown';
+export type Vendors = 'Gmaps' | 'Leaflet' | 'Unknown';
 
 @Injectable({ providedIn: LoaderMod })
 export class CmMapsConfig {

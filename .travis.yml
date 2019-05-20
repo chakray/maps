@@ -12,7 +12,7 @@ install:
   - npm i
 script:
   - npm run lint
-  # - npx ng build @$PJ_scope/$PJ_name
+  - npx ng build @$PJ_scope/$PJ_name
   - npx ng test --watch=false --code-coverage
   - npx ng build --prod --deploy-url /$PJ_name/ --base-href /$PJ_name/
 cache:
