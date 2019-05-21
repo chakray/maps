@@ -9,11 +9,16 @@ export class CmMapsLoader {
   tileHost?;
   cfgMap = {};
   constructor(
-    @Inject(MapsConfig) private cfgList: MapsConfig[]) {
-    this.cfgMap = cfgList.reduce((r, i) => {
-      r[i.vendor] = i;
-      return r;
-    }, {});
+    @Inject(MapsConfig) private cfgList: MapsConfig[] | MapsConfig) {
+    if (Array.isArray(cfgList)) {
+      this.cfgMap = cfgList.reduce((r, i) => {
+        r[i.vendor] = i;
+        return r;
+      }, {});
+    } else {
+      this.cfgMap = {};
+      this.cfgMap[cfgList.vendor] = cfgList;
+    }
   }
   loadConfig(vnd) {
     const cfg = this.cfgMap[vnd] || new MapsConfig();
