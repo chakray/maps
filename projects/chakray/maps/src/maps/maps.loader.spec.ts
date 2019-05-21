@@ -33,7 +33,7 @@ class GmapsConfig extends CmMapsConfig {
   loaded = true;
   api = {
     maps: { Map() {} }
-  }
+  };
 }
 
 Spec.pdr(P, {
