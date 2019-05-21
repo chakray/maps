@@ -33,7 +33,7 @@ export class CmMapsLoader {
   }
   initGmaps(cfg, { el, origin, zoom }) {
     const { maps } = cfg.api;
-    const [lat, lng, alt] = origin;
+    const [lat, lng, alt] = origin || [0, 0, 0];
     return new maps.Map(el, { zoom, center: { lat, lng, alt } });
   }
   initLeaflet(cfg, { el, origin, zoom }) {

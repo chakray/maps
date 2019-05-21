@@ -11,13 +11,7 @@ import { CmMapsLoader as Loader } from './maps.loader';
 export class CmMapsTag implements AfterViewInit {
   @Input() origin = [0, 0];
   @Input() zoom = 8;
-  @Input() set vendor(v) {
-    this.vnd = v;
-  }
-  get vendor() {
-    return this.vnd;
-  }
-  vnd: Vendors;
+  vendor: Vendors;
   @ViewChild('map', { read: ElementRef }) map: ElementRef;
   cfg: MapsConfig;
   m: any;
