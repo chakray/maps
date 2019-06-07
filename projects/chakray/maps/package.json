@@ -10,8 +10,8 @@
   "description": "Maps tag",
   "license": "MIT",
   "keywords": [
-    "angular", "chakray"
-    "maps", "leaflet", "gmaps",
+    "angular", "chakray",
+    "maps", "leaflet", "gmaps"
   ],
   "repository": {
     "type": "git",
