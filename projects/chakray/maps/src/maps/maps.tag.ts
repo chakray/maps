@@ -1,4 +1,5 @@
 import { Input, AfterViewInit, OnDestroy,
+  Output, EventEmitter,
   ViewChild, ElementRef, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -14,6 +15,7 @@ export class CmMapsTag implements AfterViewInit, OnDestroy {
   @Input() origin = [0, 0];
   @Input() zoom = 8;
   @Input() vendor: Vendors;
+  @Output() event = new EventEmitter();
   @ViewChild('map', { read: ElementRef }) map: ElementRef;
   cfg: MapsConfig;
   m: any;
@@ -35,6 +37,7 @@ export class CmMapsTag implements AfterViewInit, OnDestroy {
       };
       this.cfg = cfg;
       this.m = this.ld.init(cfg, opts);
+      this.event.emit({ name: 'init', data: { map: this.m } });
     });
   }
 }
