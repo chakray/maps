@@ -37,15 +37,16 @@ export class CmMapsLoader {
     return new maps.Map(el, { zoom, center: { lat, lng, alt } });
   }
   initLeaflet(cfg, { el, origin, zoom }) {
-    const { api, tileHost } = cfg;
-    const m = api.map(el, { attributionControl: null })
+    const { api, tileHost, mapOptions = {}, tileOptions = {} } = cfg;
+    const m = api.map(el, { attributionControl: null, ...mapOptions })
       .setView(origin, zoom);
     if (!tileHost) { return m; }
     api.tileLayer(tileHost, {
       tileSize: 512,
       zoomOffset: -1,
       minZoom: 1,
-      crossOrigin: true
+      crossOrigin: true,
+      ...tileOptions
     }).addTo(m);
     return m;
   }
