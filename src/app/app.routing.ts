@@ -38,14 +38,14 @@ const routes: Routes = [{
     ChHeroMod,
   ],
   providers: [
-  Head,
-  {
-    provide: heroConfig, useValue: heroCfg
-  }, {
-    provide: CmMapsConfig, useClass: GmapsConfig, multi: true
-  }, {
-    provide: CmMapsConfig, useClass: LmapsConfig, multi: true
-  }],
+    Head,
+    {
+      provide: heroConfig, useValue: heroCfg
+    }, {
+      provide: CmMapsConfig, useClass: GmapsConfig, multi: true
+    }, {
+      provide: CmMapsConfig, useClass: LmapsConfig, multi: true
+    }],
   exports: [
     ChHeroMod,
     RouterModule

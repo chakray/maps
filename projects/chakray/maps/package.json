@@ -1,6 +1,6 @@
 {
   "name": "@chakray/maps",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
@@ -10,9 +10,8 @@
   "description": "Maps tag",
   "license": "MIT",
   "keywords": [
-    "angular",
-    "maps",
-    "chakray"
+    "angular", "chakray"
+    "maps", "leaflet", "gmaps",
   ],
   "repository": {
     "type": "git",
